@@ -1,11 +1,12 @@
 import {constants} from './constants'
 
 
-export const addToastToList = (payload) => {       
+export const addToastToList = (payload, autoRemove) => {       
     return (
         {
             type: constants.ADD_TOAST_TO_LIST,
-            payload
+            payload,
+            autoRemove
         }
     )
 }
@@ -28,7 +29,7 @@ export const autoRemove = () => {
     )
 }
 
-export const closeModalMessage = (payload) => {
+export const closeModalMessage = () => {
     return ({
         type: constants.CLOSE_MODAL_MESSAGE
     })
@@ -39,6 +40,14 @@ export const visiblizeModal = (payload) => {
         {
             type: constants.VISIBLIZE_MODAL,
             payload
+        }
+    )
+}
+
+export const toggleMode = () => {
+    return (
+        {
+            type: constants.TOGGLE__MODE
         }
     )
 }

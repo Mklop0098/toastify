@@ -9,7 +9,8 @@ export const Provider = ({children}) => {
     const initalState = {
         toastList: [],
         modalMessage: "",
-        isOpen: false
+        isOpen: false,
+        isDarkMode: false
     }
     const [state, dispatch] = useReducer(reducer, initalState)
 

@@ -35,6 +35,12 @@ export const reducer = (state, action) => {
                 ...state,
                 isOpen: state.isOpen = !state.isOpen
             }
+
+        case constants.TOGGLE__MODE: 
+            return {
+                ...state,
+                isDarkMode: state.isDarkMode = !state.isDarkMode
+            }
         default: return state
     }
 } 

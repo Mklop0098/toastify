@@ -1,20 +1,156 @@
 .App {
   display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  height: 100vh;
+  transition: all 0.3s ease;
 }
-.btn__container {
+
+
+
+
+.theme-dark {
+
+  background-color: var(--background);
+  --warn-background: var(--warn);
+  --warn-color: #ffff;
+  --warn-border: var(--warn);
+  --error-background: var(--error);
+  --error-color: #ffff;
+  --error-border: var(--error);
+  --success-background: var(--success);
+  --success-color: #ffff;
+  --success-border: var(--success);
+  --modal-background: var(--modal);
+  --modal-color: #ffff;
+  --modal-border: var(--modal);
+
+}
+
+.theme-light {
+  background-color: #ffff;
+  --warn-background: #ffff;
+  --warn-hover-background: var(--warn);
+  --error-hover-background: var(--error);
+  --success-hover-background: var(--success);
+  --modal-hover-background: var(--modal);
+
+  --warn-color: var(--warn);
+  --warn-border: var(--warn);
+  --error-background: #ffff;
+  --error-color: var(--error);
+  --error-border: var(--error);
+  --success-background: #ffff;
+  --success-color: var(--success);
+  --success-border: var(--success);
+  --modal-background: #ffff;
+  --modal-color: var(--modal);
+  --modal-border: var(--modal);
+}
+
+.warn {
+  background-color: var(--warn-background);
+  color: var(--warn-color);
+  border: 1px solid var(--warn-border);
+}
+
+.error {
+  background-color: var(--error-background);
+  color: var(--error-color);
+  border: 1px solid var(--error-border);
+}
+
+.success {
+  background-color: var(--success-background);
+  color: var(--success-color);
+  border: 1px solid var(--success-border);
+}
+
+.modal-style {
+  background-color: var(--modal-background);
+  color: var(--modal-color);
+  border: 1px solid var(--modal-border)
+}
+
+.toggle-btn {
   width: auto;
   height: 30px;
   margin: 20px;
-  padding: 0 16px;
-  outline: none;
-  border: none;
-  background-color: rgb(70, 69, 69);
-  border-radius: 4px;
-  color: white; 
   cursor: pointer;
-  transition: background-color 0.5s ease;
+  align-items: center;
+  display: flex;
 }
 
-.btn__list:hover .btn__container{
-  background-color: rgb(107, 107, 107);
+.app__handler {
+  display: flex;
+  height: auto;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.app__btn { 
+  display: flex;
+  height: auto;
+}
+
+
+.btn__container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+  margin: 20px;
+  padding: 0 16px;
+  outline: none;;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  width: 80px;
+
+}
+
+.btn__container > span {
+  position: absolute;
+  z-index: 2;
+  transition: all 0.3s ease;
+
+}
+
+.btn__container::before {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  transition: all 0.5s ease;
+}
+
+.warn::before {
+  background-color: var(--warn-hover-background);
+}
+
+.error::before {
+  background-color: var(--error-hover-background);
+}
+
+.success::before {
+  background-color: var(--success-hover-background);
+}
+
+.modal-style::before {
+  background-color: var(--modal-hover-background);
+}
+
+
+.btn__container:hover::before {
+  width: 100%;
+  left: 0;
+  color: white;
+}
+.btn__container:hover > span{
+  color: white;
 }

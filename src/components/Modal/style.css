@@ -1,15 +1,30 @@
 .modal {
-    background-color: white;
     width: 400px;
-    border-radius: 10px;
+    border-radius: 12px;
     box-shadow: 0px 0px 12px 0px rgba(0,0,0,0.5);
     animation: scale-up 0.5s ;
 
     position: absolute;
-
+    border: none;
 }
 
-.modal__title {
+.modal--theme-light {
+    --header-background: rgb(230 230 230);
+    --color: black;
+    --content-background: white;
+    --handler-background: rgb(230 230 230);
+}
+
+.modal--theme-dark {
+    --header-background: rgb(30 31 33);
+    --color: white;
+    --content-background: rgb(42 42 42);
+    --handler-background: rgb(30 31 33);
+}
+
+.modal__header {
+    background-color: var(--header-background);
+    color: var(--color);
     padding: 12px 12px;
     font-weight: 500;
     font-size: 18px;
@@ -19,7 +34,35 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: rgb(231, 231, 231);
+}
+
+.modal__content {
+    background-color: var(--content-background);
+    color: var(--color);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 30px;
+    font-size: 18px;
+    z-index: 100;
+    border: none;
+}
+
+.modal__handler {
+    background-color: var(--handler-background);
+    color: var(--color);
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    padding: 12px;
+
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
 
 .modal__container {
@@ -27,12 +70,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    border: none;
+
 
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.596);
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 .modal-overlay {
@@ -45,29 +90,8 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(255, 255, 255, 0);
-}
+    border: none;
 
-.modal__content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    padding: 30px;
-    font-size: 18px;
-    z-index: 100;
-}
-
-.modal__handler {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-
-    padding: 12px;
-    background-color: rgb(231, 231, 231);
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
 }
 
 .modal__handler > button {
@@ -75,19 +99,21 @@
     cursor: pointer;
     border: none;
     outline: none;
+    margin: 0 12px
 }
 
 .model__handler--primary {
     background-color: rgb(49, 142, 248);
     color: white;
     border-radius: 4px;
-}
+}   
 
 .modal__handler--default {
-    background-color: rgb(231, 231, 231);
+    background-color: var(--handler-background);
     border-radius: 4px;
-
+    color: var(--color);
 }
+
 
 @keyframes scale-up {
     0% {

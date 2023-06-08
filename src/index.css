@@ -13,9 +13,13 @@ code {
 }
 
 #root {
-  position: relative;
-  width: 100%;
-  height: 500vh;
+
+  --background: #212121;
+  --button-background: #ede7f6;
+  --warn: #ff9800;
+  --success: #4caf50;
+  --error: #f44336;
+  --modal: #03a9f4;
 }
 
 #toast-root {
