@@ -8,20 +8,6 @@
     border: none;
 }
 
-.modal--theme-light {
-    --header-background: rgb(230 230 230);
-    --color: black;
-    --content-background: white;
-    --handler-background: rgb(230 230 230);
-}
-
-.modal--theme-dark {
-    --header-background: rgb(30 31 33);
-    --color: white;
-    --content-background: rgb(42 42 42);
-    --handler-background: rgb(30 31 33);
-}
-
 .modal__header {
     background-color: var(--header-background);
     color: var(--color);

@@ -1,18 +1,20 @@
 import  ReactDOM  from "react-dom"
 import './style.css'
 import { Toast} from "./Toast";  
-import { useModal } from "../useHook";
+import { useToast } from "../../contexts/ToastContext";
+// import { useModal, useToast } from "../useHook";
 
 export const ToastContainer = () => {
 
-    const [{toastList}, dispatch] = useModal()
+    // const {toast} = useToast()
+    const {toast} = useToast()
 
         const toastDOM = document.getElementById("toast-root")
         return ReactDOM.createPortal(
             <div className="toast__container">
                 {
-                    toastList.map((item, key) => (
-                        <Toast props={item} key={key}/>
+                    toast.map((item, key) => (
+                        <Toast {...item} key={key}/>
                     ))
                 }
             </div>,

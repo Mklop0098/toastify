@@ -4,49 +4,9 @@
   flex-direction: column;
   height: 100vh;
   transition: all 0.3s ease;
-}
-
-
-
-
-.theme-dark {
-
   background-color: var(--background);
-  --warn-background: var(--warn);
-  --warn-color: #ffff;
-  --warn-border: var(--warn);
-  --error-background: var(--error);
-  --error-color: #ffff;
-  --error-border: var(--error);
-  --success-background: var(--success);
-  --success-color: #ffff;
-  --success-border: var(--success);
-  --modal-background: var(--modal);
-  --modal-color: #ffff;
-  --modal-border: var(--modal);
-
 }
 
-.theme-light {
-  background-color: #ffff;
-  --warn-background: #ffff;
-  --warn-hover-background: var(--warn);
-  --error-hover-background: var(--error);
-  --success-hover-background: var(--success);
-  --modal-hover-background: var(--modal);
-
-  --warn-color: var(--warn);
-  --warn-border: var(--warn);
-  --error-background: #ffff;
-  --error-color: var(--error);
-  --error-border: var(--error);
-  --success-background: #ffff;
-  --success-color: var(--success);
-  --success-border: var(--success);
-  --modal-background: #ffff;
-  --modal-color: var(--modal);
-  --modal-border: var(--modal);
-}
 
 .warn {
   background-color: var(--warn-background);
@@ -95,7 +55,6 @@
 
 
 .btn__container {
-  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -108,49 +67,4 @@
   font-weight: 600;
   transition: all 0.3s ease;
   width: 80px;
-
-}
-
-.btn__container > span {
-  position: absolute;
-  z-index: 2;
-  transition: all 0.3s ease;
-
-}
-
-.btn__container::before {
-  content: '';
-  position: absolute;
-  width: 0;
-  height: 100%;
-  top: 0;
-  left: 0;
-  z-index: 1;
-  transition: all 0.5s ease;
-}
-
-.warn::before {
-  background-color: var(--warn-hover-background);
-}
-
-.error::before {
-  background-color: var(--error-hover-background);
-}
-
-.success::before {
-  background-color: var(--success-hover-background);
-}
-
-.modal-style::before {
-  background-color: var(--modal-hover-background);
-}
-
-
-.btn__container:hover::before {
-  width: 100%;
-  left: 0;
-  color: white;
-}
-.btn__container:hover > span{
-  color: white;
 }

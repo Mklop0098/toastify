@@ -1,70 +1,51 @@
 
 import './App.css';
 import { ToastContainer } from './components/Toast/ToatContainer';
-import { addToastToList, visiblizeModal, removeToastFromList} from './components/Context/action';
-import { useModal } from './components/useHook';
+// import { useModal, useTheme, useToast } from './components/useHook';
 import { Modal } from './components/Modal/Modal';
-import { useEffect, useState } from 'react';
-import { ModeToggle } from './components/ModeToggle/ModeToggle';
+import { Button } from './components/Button';
+import { useToast } from './contexts/ToastContext';
+import { useModal } from './contexts/ModalContext';
+import {FaSun} from 'react-icons/fa'
+import {IoMoon} from 'react-icons/io5'
+import { useTheme } from './contexts/ThemeContext';
 
 function App() {
 
-  const [state, dispatch] = useModal()
-  const [theme, setTheme] = useState('theme-light')
-
-  useEffect(() => {
-    if (state.isDarkMode) {
-      setTheme('theme-dark')
-    }
-    else setTheme('theme-light')
-  }, [state.isDarkMode])
-
-
-  const delay = (duration) => new Promise(resolve => setTimeout(resolve, duration));
-
-  const handleClick = async (toast) => {
-    await dispatch(addToastToList(toast))
-    await delay(3000);
-    return dispatch(removeToastFromList(toast.id));
-  };
+  const {addToast} = useToast();
+  const {showModal} = useModal();
+  const {theme, setTheme} = useTheme();
 
   return (
-    <div className={`App ${theme}`}>
+    <div className={`App`}>
 
         <div className='app__handler'>
           <div className='app__btn'>
-            <button className={`btn__container success`}
-              onClick={() => handleClick({
-              type: "success",
-              message: "This is success toast",
-            })}><span>Success</span></button>
-          
-            <button className={`btn__container error`}
-              onClick={() => handleClick({
-              type: "error",
-              message: "This is error toast",
-            })}><span>Error</span></button>
 
-            <button className={`btn__container warn`}
-              onClick={() => handleClick({
-              type: "warn",
-              message: "This is warning toast",
-
-            })}><span><span>Warn</span></span></button>
-          
-            <button className='btn__container modal-style'
-              onClick={() => dispatch(visiblizeModal("Message"))}
-            >
-              <span>Confirm</span>
-            </button>
-            <button className='btn__container modal-style'
-              onClick={() => dispatch(visiblizeModal(" Line 18:8:  React Hook useEffect has a missing dependency: 'dispatch'. Either include it or remove the dependency array  react-hooks/exhaustive-deps!"))}
-            >
-              <span>Check</span>
-            </button>
-          </div>
-          <ModeToggle />
-        </div>
+            <Button
+                className='warn'
+                text='warn' 
+                onClick={() => {
+                  addToast({
+                    type: "warn",
+                    message: "Warning"
+                  })
+                }}
+            />
+            <Button
+                className='warn'
+                text='Show modal' 
+                onClick={showModal}
+            />
+            </div>
+              <div className='toggle-btn'>       
+              {
+                theme === 'theme-dark' 
+                  ? <FaSun onClick={() => {setTheme('theme-light')}} color='#ffee58' fontSize={20}/> 
+                  : <IoMoon onClick={() => setTheme('theme-dark')} fontSize={20} color="#616161"/>
+              }
+              </div>
+            </div>
         <ToastContainer/>  
         <Modal />
 

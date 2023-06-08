@@ -3,28 +3,25 @@
 import './style.css'
 import {MdCancel}from 'react-icons/md'
 import { styleToast } from '../../data';
-import { removeToastFromList } from '../Context/action';
-import { useModal } from '../useHook';
-import { useEffect, useRef } from 'react';
+import { useToast } from '../../contexts/ToastContext';
+import { useEffect } from 'react';
 
+export const Toast = ({id, type, message}) => {
+    const {removeToast} = useToast()
 
-
-export const Toast = ({props}) => {
-
-    const [state, dispatch] = useModal()
-
-    const handleRemove = (id) => {
-        dispatch(removeToastFromList(id))
-    }
+    useEffect(() => {
+        setTimeout(() => {
+            removeToast(id)
+        }, 3000)
+    }, [])
 
     return (
-        <div className='toast-type'
-        style={styleToast[props.type]}>
+        <div className={`toast-type ${type + '-toast'}`}>
             <div className='toast-type__content toast__type--appear'>
-                <i className={styleToast[props.type].icon}></i>
-                <span>{props.message}</span>
+                <i className={styleToast[type].icon}></i>
+                <span>{message}</span>
             </div>
-            <div onClick={() => handleRemove(props.id)} className='close-btn'><MdCancel color='black'/></div>
+            <div onClick={() => removeToast(id)} className='close-btn'><MdCancel color='white'/></div>
         </div>
     )
 };

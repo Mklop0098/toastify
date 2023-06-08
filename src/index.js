@@ -3,14 +3,21 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { Provider } from './components/Context/Context';
+import { ToastContextProvider } from './contexts/ToastContext';
+import { ModalContextProvider } from './contexts/ModalContext';
+import { ThemeContextProvider } from './contexts/ThemeContext';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
-  <Provider>
-    <App />
-  </Provider>
+  <ThemeContextProvider>
+    <ToastContextProvider>
+      <ModalContextProvider>
+        <App />
+      </ModalContextProvider>
+    </ToastContextProvider>
+  </ThemeContextProvider>
 );
 
 
