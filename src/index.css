@@ -37,6 +37,7 @@ code {
   --color: white;
   --content-background: rgb(42 42 42);
   --handler-background: rgb(30 31 33);
+  --label-hover: rgba(245, 245, 245, 0.096);
 
 }
 
@@ -47,7 +48,7 @@ code {
   --error-hover-background: #f44336;
   --success-hover-background: #4caf50;
   --modal-hover-background: #03a9f4;
-
+  --label-hover: rgba(236, 236, 236, 0.993);
   --warn-color: #ff9800;
   --warn-border: #ff9800;
   --error-background: #ffff;
@@ -85,4 +86,5 @@ code {
   display: flex;
   align-items: center;
   justify-content: center;
+
 }

@@ -8,13 +8,14 @@ import { ModalContextProvider } from './contexts/ModalContext';
 import { ThemeContextProvider } from './contexts/ThemeContext';
 
 
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
   <ThemeContextProvider>
     <ToastContextProvider>
       <ModalContextProvider>
-        <App />
+            <App />
       </ModalContextProvider>
     </ToastContextProvider>
   </ThemeContextProvider>

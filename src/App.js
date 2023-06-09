@@ -1,7 +1,6 @@
 
 import './App.css';
 import { ToastContainer } from './components/Toast/ToatContainer';
-// import { useModal, useTheme, useToast } from './components/useHook';
 import { Modal } from './components/Modal/Modal';
 import { Button } from './components/Button';
 import { useToast } from './contexts/ToastContext';
@@ -9,12 +8,17 @@ import { useModal } from './contexts/ModalContext';
 import {FaSun} from 'react-icons/fa'
 import {IoMoon} from 'react-icons/io5'
 import { useTheme } from './contexts/ThemeContext';
+import { UploadImage } from './components/UploadImage/UploadImage';
 
 function App() {
 
   const {addToast} = useToast();
-  const {showModal} = useModal();
   const {theme, setTheme} = useTheme();
+  const {visible, showModal, hideModal} = useModal()
+
+  const handleUploadedImage = (image) => {
+    console.log(image)
+  }
 
   return (
     <div className={`App`}>
@@ -37,7 +41,10 @@ function App() {
                 text='Show modal' 
                 onClick={showModal}
             />
+            <UploadImage onChange={(image) => handleUploadedImage(image)} canEnlarge={true}/>
+
             </div>
+            
               <div className='toggle-btn'>       
               {
                 theme === 'theme-dark' 
@@ -47,7 +54,22 @@ function App() {
               </div>
             </div>
         <ToastContainer/>  
-        <Modal />
+        <Modal root={'modal-root'} toggle={visible}>
+          <div className='modal__container'> 
+              <div className='modal-overlay' onClick={hideModal}></div>
+                  <div className={`modal`}>
+                      <div className='modal__header'>
+                          <span>{"Model"}</span>
+                          <i className="fa-solid fa-xmark" onClick={hideModal} style={{cursor: "pointer"}}></i>
+                      </div>
+                      <div className='modal__content'><span>Message</span></div>
+                      <div className='modal__handler'>
+                          <button onClick={hideModal} className='modal__handler--default'>Cancel</button>
+                          <button onClick={hideModal} className='model__handler--primary'>Confirm</button>
+                      </div>
+                  </div>
+            </div>
+        </Modal>
 
     </div>
   );
