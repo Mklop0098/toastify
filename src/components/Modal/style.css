@@ -100,11 +100,6 @@
     color: var(--color);
 }
 
-
-
-
-
-
 @keyframes scale-up {
     0% {
         transform: scale(0.5);
