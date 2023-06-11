@@ -1,4 +1,5 @@
 import { createContext, useContext, useState } from "react";
+import {Modal} from "../components/Modal/Modal"
 
 export const ModalContext = createContext();
 
@@ -7,17 +8,20 @@ export const useModal = () => {
 }
 
 export const ModalContextProvider = (props) => {
-    const [visible, setVisible] = useState(false);
-
-    const showModal = () => {
-        setVisible(true);
-    }
+    const [modal, setModal] = useState(undefined)
 
     const hideModal = () => {
-        setVisible(false);
+        setModal(undefined);
     }
     
-    return <ModalContext.Provider value={{visible, showModal, hideModal}}>
+    return <ModalContext.Provider value={{setModal}}>
         {props.children}
+        <Modal 
+          toggle={modal} 
+          root={"modal-root"} 
+          onClick={hideModal} 
+          title={modal?.title} 
+          body={modal?.body} 
+          footer={modal?.footer}/>
     </ModalContext.Provider>
 }
